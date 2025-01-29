@@ -7,6 +7,7 @@ function App() {
 
   const [data, setData] = useState(db)
   const [carrito, setCarrito] = useState([])
+  const MAX_ITEM = 5
 
   function addToCart(item){
 
@@ -29,7 +30,7 @@ function App() {
 
   function increaseQuantity(id){
     const updatedCarrito = carrito.map(item => {
-      if(item.id === id){
+      if(item.id === id && item.quantity < MAX_ITEM){
         return{
           ...item,
           quantity: item.quantity + 1
